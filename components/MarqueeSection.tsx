@@ -11,13 +11,17 @@ const items2 = [
 ];
 
 export default function MarqueeSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const track1Ref = useRef<HTMLDivElement>(null);
   const track2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let anim1: gsap.core.Tween;
+    let anim2: gsap.core.Tween;
+
     const ctx = gsap.context(() => {
       // First marquee (right to left)
-      gsap.to(track1Ref.current, {
+      anim1 = gsap.to(track1Ref.current, {
         xPercent: -50,
         duration: 18,
         repeat: -1,
@@ -25,18 +29,41 @@ export default function MarqueeSection() {
       });
 
       // Second marquee (left to right, slightly slower)
-      gsap.to(track2Ref.current, {
+      anim2 = gsap.to(track2Ref.current, {
         xPercent: -50,
         duration: 22,
         repeat: -1,
         ease: 'linear',
       });
-    });
+    }, containerRef);
+
+    // Pause when off-screen to save CPU/battery
+    const container = containerRef.current;
+    if (container) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            anim1?.resume();
+            anim2?.resume();
+          } else {
+            anim1?.pause();
+            anim2?.pause();
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(container);
+      return () => {
+        observer.disconnect();
+        ctx.revert();
+      };
+    }
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <div style={{ background: '#0a0a0a', overflow: 'hidden', paddingTop: '40px' }}>
+    <div ref={containerRef} style={{ background: '#0a0a0a', overflow: 'hidden', paddingTop: '40px', contentVisibility: 'auto' }}>
       {/* Marquee row 1 */}
       <a href="/dreams/whats-new" style={{ display: 'block', overflow: 'hidden', height: '120px' }}>
         <div
@@ -45,6 +72,8 @@ export default function MarqueeSection() {
             display: 'flex',
             whiteSpace: 'nowrap',
             width: 'max-content',
+            transform: 'translate3d(0, 0, 0)',
+            willChange: 'transform',
           }}
         >
           {[...items1, ...items1].map((text, i) => (
@@ -78,6 +107,8 @@ export default function MarqueeSection() {
             display: 'flex',
             whiteSpace: 'nowrap',
             width: 'max-content',
+            transform: 'translate3d(0, 0, 0)',
+            willChange: 'transform',
           }}
         >
           {[...items2, ...items2].map((text, i) => (

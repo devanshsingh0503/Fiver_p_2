@@ -41,6 +41,10 @@ export default function Hero() {
       <img
         src={`${CDN}/hero.C3IhNT7Q.jpg`}
         alt=""
+        loading="eager"
+        // @ts-expect-error fetchpriority attribute
+        fetchpriority="high"
+        decoding="sync"
         style={{
           position: 'absolute',
           inset: 0,
@@ -48,6 +52,7 @@ export default function Hero() {
           height: '100%',
           objectFit: 'cover',
           opacity: 0.7,
+          transform: 'translate3d(0, 0, 0)',
         }}
       />
 

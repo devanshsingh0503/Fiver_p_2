@@ -40,6 +40,8 @@ export default function CTASection() {
           alt="Procreate Dreams icon"
           width={100}
           height={100}
+          loading="lazy"
+          decoding="async"
           style={{ borderRadius: '20px', marginBottom: '24px' }}
         />
 

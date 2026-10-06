@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  compress: true,
   images: {
     remotePatterns: [
       {
@@ -9,6 +10,9 @@ const nextConfig: NextConfig = {
         pathname: "/_nuxt/**",
       },
     ],
+  },
+  experimental: {
+    optimizePackageImports: ["gsap", "@gsap/react", "lenis"],
   },
 };
 

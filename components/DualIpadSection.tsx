@@ -86,6 +86,8 @@ export default function DualIpadSection({
                   alt=""
                   width={1734}
                   height={1300}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
                 />
               </IpadMockup>
@@ -110,6 +112,8 @@ export default function DualIpadSection({
                   alt=""
                   width={1734}
                   height={1300}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
                 />
               </IpadMockup>

@@ -83,9 +83,9 @@ export default function FeatureSlider() {
         ease: 'none',
         scrollTrigger: {
           trigger: wrapper,
-          start: 'top 60%',
-          end: `+=${totalWidth}`,
-          scrub: 1,
+          start: 'top 70%',
+          end: `+=${totalWidth * 0.85}`,
+          scrub: 0.8,
           pin: false,
         },
       });
@@ -95,7 +95,7 @@ export default function FeatureSlider() {
         opacity: 0,
         y: 40,
         duration: 0.6,
-        stagger: 0.1,
+        stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: wrapper,
@@ -108,10 +108,10 @@ export default function FeatureSlider() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="procreate-section" style={{ background: '#0a0a0a' }}>
+    <div ref={sectionRef} className="procreate-section" style={{ background: '#0a0a0a', contentVisibility: 'auto' }}>
       <div
         ref={wrapperRef}
-        style={{ overflow: 'hidden', paddingBottom: '300px' }}
+        style={{ overflow: 'hidden', paddingBottom: '100px' }}
       >
         <div className="container" style={{ position: 'relative' }}>
           <div
@@ -122,6 +122,8 @@ export default function FeatureSlider() {
               flexWrap: 'nowrap',
               width: 'max-content',
               paddingLeft: '5px',
+              transform: 'translate3d(0, 0, 0)',
+              willChange: 'transform',
             }}
           >
             {features.map((f, i) => (

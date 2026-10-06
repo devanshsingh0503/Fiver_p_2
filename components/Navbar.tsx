@@ -12,32 +12,36 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    gsap.from(navRef.current, {
-      y: -60,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-      delay: 0.2,
-    });
+    const ctx = gsap.context(() => {
+      gsap.from(navRef.current, {
+        y: -60,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.2,
+      });
 
-    ScrollTrigger.create({
-      start: 'top -80',
-      end: 99999,
-      onEnter: () => {
-        gsap.to(navRef.current, {
-          backgroundColor: 'rgba(10,10,10,0.92)',
-          backdropFilter: 'blur(12px)',
-          duration: 0.4,
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(navRef.current, {
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(0px)',
-          duration: 0.4,
-        });
-      },
-    });
+      ScrollTrigger.create({
+        start: 'top -80',
+        end: 99999,
+        onEnter: () => {
+          gsap.to(navRef.current, {
+            backgroundColor: 'rgba(10,10,10,0.92)',
+            backdropFilter: 'blur(12px)',
+            duration: 0.4,
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(navRef.current, {
+            backgroundColor: 'transparent',
+            backdropFilter: 'blur(0px)',
+            duration: 0.4,
+          });
+        },
+      });
+    }, navRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

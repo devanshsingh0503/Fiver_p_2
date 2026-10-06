@@ -64,6 +64,8 @@ export default function TilesSection() {
               <img
                 src={`${CDN}/${tile.img}`}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 style={{
                   borderRadius: '42px',
                   display: 'block',

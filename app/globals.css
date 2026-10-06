@@ -13,7 +13,27 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 body {
@@ -21,6 +41,9 @@ body {
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -28,7 +51,7 @@ a {
   text-decoration: none;
 }
 
-/* iPad mockup styles */
+/* Hardware accelerated iPad mockup styles */
 .ipad-pro-m4 {
   --landscape-device-width: 90vw;
   --landscape-max-device-width: 834px;
@@ -37,6 +60,9 @@ a {
   flex-shrink: 0;
   position: relative;
   width: min(var(--landscape-device-width), var(--landscape-max-device-width));
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .ipad-pro-m4--large {
@@ -258,3 +284,27 @@ a {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* GPU Acceleration & Performance utility classes */
+.carousel-card {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.tile-card,
+.feature-card {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+img, video {
+  content-visibility: auto;
+}
+
+.optimize-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+

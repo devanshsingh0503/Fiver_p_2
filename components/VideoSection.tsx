@@ -17,8 +17,28 @@ interface VideoSectionProps {
 
 export default function VideoSection({ videoSrc, posterSrc, mainText, dimmedText }: VideoSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
   const spanRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -64,11 +84,13 @@ export default function VideoSection({ videoSrc, posterSrc, mainText, dimmedText
           overflow: 'hidden',
           aspectRatio: '2.2/1',
           border: '1px solid rgba(255,255,255,0.07)',
+          transform: 'translate3d(0, 0, 0)',
         }}>
           <video
+            ref={videoRef}
             src={`${CDN}/${videoSrc}`}
             poster={`${CDN}/${posterSrc}`}
-            autoPlay
+            preload="metadata"
             muted
             loop
             playsInline

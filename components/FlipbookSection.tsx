@@ -14,6 +14,26 @@ export default function FlipbookSection() {
   const leftIpadRef = useRef<HTMLDivElement>(null);
   const rightIpadRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -85,6 +105,8 @@ export default function FlipbookSection() {
                 alt=""
                 width={1734}
                 height={1300}
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
               />
             </IpadMockup>
@@ -94,9 +116,10 @@ export default function FlipbookSection() {
           <div style={{ zIndex: 20, width: 'min(90vw, 600px)' }}>
             <IpadMockup style={{ width: '100%' }}>
               <video
+                ref={videoRef}
                 src={`${CDN}/flipbook_en.DrAevauO.mp4`}
                 poster={`${CDN}/flipbook_en.DuSpAzur.jpg`}
-                autoPlay
+                preload="metadata"
                 muted
                 loop
                 playsInline
@@ -119,6 +142,8 @@ export default function FlipbookSection() {
                 alt=""
                 width={1734}
                 height={1300}
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
               />
             </IpadMockup>

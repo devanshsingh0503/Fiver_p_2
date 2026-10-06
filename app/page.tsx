@@ -43,6 +43,8 @@ function KeyframesCards() {
         <img
           src={`${CDN}/move-scale.BJ7o0Gol.jpg`}
           alt="Move & Scale"
+          loading="lazy"
+          decoding="async"
           style={{ width: '100%', display: 'block' }}
         />
       </div>
@@ -58,6 +60,8 @@ function KeyframesCards() {
         <img
           src={`${CDN}/filters-effects.BpRt2pk2.jpg`}
           alt="Filters & Effects"
+          loading="lazy"
+          decoding="async"
           style={{ width: '100%', display: 'block' }}
         />
         <div style={{ padding: '32px' }}>
