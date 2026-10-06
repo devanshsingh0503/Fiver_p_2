@@ -262,6 +262,7 @@ export default function VideoCarousel() {
         <button
           onClick={prev}
           aria-label="Previous"
+          className="carousel-nav-btn carousel-nav-btn-left"
           style={{
             position: 'absolute',
             left: '20px',
@@ -279,7 +280,7 @@ export default function VideoCarousel() {
             color: '#fff',
             backdropFilter: 'blur(8px)',
             zIndex: 20,
-            transition: 'background 0.2s, transform 0.2s',
+            transition: 'background 0.2s',
           }}
           onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
           onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}
@@ -293,6 +294,7 @@ export default function VideoCarousel() {
         <button
           onClick={next}
           aria-label="Next"
+          className="carousel-nav-btn carousel-nav-btn-right"
           style={{
             position: 'absolute',
             right: '20px',
@@ -310,7 +312,7 @@ export default function VideoCarousel() {
             color: '#fff',
             backdropFilter: 'blur(8px)',
             zIndex: 20,
-            transition: 'background 0.2s, transform 0.2s',
+            transition: 'background 0.2s',
           }}
           onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.2)')}
           onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.1)')}

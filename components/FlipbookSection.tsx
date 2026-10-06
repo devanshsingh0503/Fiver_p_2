@@ -37,7 +37,6 @@ export default function FlipbookSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading reveal
       gsap.from(headingRef.current, {
         opacity: 0,
         y: 30,
@@ -48,7 +47,6 @@ export default function FlipbookSection() {
         },
       });
 
-      // Left iPad slides in from left
       gsap.from(leftIpadRef.current, {
         x: -200,
         opacity: 0,
@@ -61,7 +59,6 @@ export default function FlipbookSection() {
         },
       });
 
-      // Right iPad slides in from right
       gsap.from(rightIpadRef.current, {
         x: 200,
         opacity: 0,
@@ -81,8 +78,8 @@ export default function FlipbookSection() {
   return (
     <div ref={sectionRef} className="procreate-section" style={{ background: '#0a0a0a' }}>
       {/* Heading */}
-      <div ref={headingRef} className="container container--medium" style={{ marginBottom: '40px', textAlign: 'center' }}>
-        <h2 className="text-subheading product-color-text" style={{ marginBottom: '12px' }}>Flipbook</h2>
+      <div ref={headingRef} className="container container--medium" style={{ marginBottom: '32px', textAlign: 'center' }}>
+        <h2 className="text-subheading product-color-text" style={{ marginBottom: '10px' }}>Flipbook</h2>
         <p className="text-heading text-heading--md" style={{ color: '#fff' }}>
           Bring your artwork to life.
         </p>
@@ -90,9 +87,9 @@ export default function FlipbookSection() {
 
       {/* Three overlapping iPads */}
       <div style={{ overflow: 'hidden' }}>
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-          {/* Left iPad */}
-          <div ref={leftIpadRef} style={{
+        <div className="flipbook-ipads-container">
+          {/* Left iPad — hidden on mobile via CSS class */}
+          <div ref={leftIpadRef} className="flipbook-left-ipad" style={{
             position: 'absolute',
             right: '50%',
             zIndex: 10,
@@ -113,7 +110,7 @@ export default function FlipbookSection() {
           </div>
 
           {/* Center iPad (front) */}
-          <div style={{ zIndex: 20, width: 'min(90vw, 600px)' }}>
+          <div style={{ zIndex: 20, width: 'min(90vw, 560px)' }}>
             <IpadMockup style={{ width: '100%' }}>
               <video
                 ref={videoRef}
@@ -128,8 +125,8 @@ export default function FlipbookSection() {
             </IpadMockup>
           </div>
 
-          {/* Right iPad */}
-          <div ref={rightIpadRef} style={{
+          {/* Right iPad — hidden on mobile via CSS class */}
+          <div ref={rightIpadRef} className="flipbook-right-ipad" style={{
             position: 'absolute',
             left: '50%',
             zIndex: 10,
@@ -152,7 +149,7 @@ export default function FlipbookSection() {
       </div>
 
       {/* Body text */}
-      <div className="container" style={{ maxWidth: '650px', textAlign: 'center', marginTop: '40px' }}>
+      <div className="container" style={{ maxWidth: '600px', textAlign: 'center', marginTop: '32px' }}>
         <p className="text-body">
           Discover the magic of animation with Flipbook. Draw each frame with beautifully textured brushes,
           multiple tracks and the tools you know and love from Procreate.

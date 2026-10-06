@@ -25,18 +25,9 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#0a0a0a',
-        overflow: 'hidden',
-      }}
+      className="hero-section"
     >
-      {/* Hero image */}
+      {/* Hero image - full-screen background */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`${CDN}/hero.C3IhNT7Q.jpg`}
@@ -45,51 +36,23 @@ export default function Hero() {
         // @ts-expect-error fetchpriority attribute
         fetchpriority="high"
         decoding="sync"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity: 0.7,
-          transform: 'translate3d(0, 0, 0)',
-        }}
+        className="hero-bg-img"
       />
 
       {/* Gradient overlay */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 60%, rgba(10,10,10,1) 100%)',
-      }} />
+      <div className="hero-overlay" />
 
       {/* Content */}
-      <div style={{
-        position: 'relative',
-        zIndex: 2,
-        textAlign: 'center',
-        padding: '0 24px',
-        maxWidth: '700px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '24px',
-      }}>
-        <p className="hero-element text-subheading" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px' }}>
+      <div className="hero-content">
+        <p className="hero-element text-subheading hero-label">
           Procreate Dreams
         </p>
 
-        <h1 className="hero-element" style={{
-          fontSize: 'clamp(3rem, 8vw, 6rem)',
-          fontWeight: 800,
-          lineHeight: 1.0,
-          letterSpacing: '-0.03em',
-          color: '#fff',
-        }}>
+        <h1 className="hero-element hero-title">
           Edit. Animate. Create.
         </h1>
 
-        <p className="hero-element text-body" style={{ maxWidth: '480px', color: 'rgba(255,255,255,0.75)' }}>
+        <p className="hero-element text-body hero-desc">
           Procreate Dreams is an award-winning animation app, packed with powerful tools that anyone can use.
         </p>
 
@@ -99,7 +62,7 @@ export default function Hero() {
           <img
             src={`${CDN}/ada-2024_en.DuGQqvxS.svg`}
             alt="Apple Design Awards 2024 Winner"
-            style={{ height: '51px' }}
+            className="hero-award"
           />
         </div>
 
@@ -113,7 +76,7 @@ export default function Hero() {
           Buy now
         </a>
 
-        <p className="hero-element" style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)' }}>
+        <p className="hero-element hero-price">
           No subscriptions. $12.99 USD once.
         </p>
       </div>

@@ -68,10 +68,11 @@ export default function DualIpadSection({
       {/* Dual iPads */}
       <div style={{ overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ position: 'relative', height: '300px' }}>
-            {/* Back / left iPad */}
+          <div className="dual-ipad-grid">
+            {/* Back / left iPad — hidden on mobile */}
             <div
               ref={leftRef}
+              className="dual-ipad-left"
               style={{
                 position: 'absolute',
                 top: 0,
@@ -96,14 +97,13 @@ export default function DualIpadSection({
             {/* Front / right iPad */}
             <div
               ref={rightRef}
+              className="dual-ipad-right"
               style={{
                 position: rightAligned ? 'relative' : 'absolute',
                 top: 0,
-                left: rightAligned ? undefined : undefined,
                 zIndex: 10,
                 marginLeft: rightAligned ? '0' : 'auto',
               }}
-              className={rightAligned ? 'dreams-dual-ipads-base-ipad left' : 'dreams-dual-ipads-base-ipad'}
             >
               <IpadMockup large>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -123,14 +123,14 @@ export default function DualIpadSection({
       </div>
 
       {/* Text content */}
-      <div className="container container--medium" style={{ marginTop: '40px' }}>
-        <h2 className="text-subheading product-color-text" style={{ marginBottom: '12px' }}>{subheading}</h2>
-        <p className="text-heading text-heading--md" style={{ color: '#fff', marginBottom: '16px' }}>{heading}</p>
-        <p className="text-body" style={{ maxWidth: '660px' }}>{body}</p>
+      <div className="container container--medium" style={{ marginTop: '32px' }}>
+        <h2 className="text-subheading product-color-text" style={{ marginBottom: '10px' }}>{subheading}</h2>
+        <p className="text-heading text-heading--md" style={{ color: '#fff', marginBottom: '14px' }}>{heading}</p>
+        <p className="text-body" style={{ maxWidth: '600px' }}>{body}</p>
       </div>
 
       {children && (
-        <div className="container" style={{ marginTop: '40px' }}>
+        <div className="container" style={{ marginTop: '32px' }}>
           {children}
         </div>
       )}

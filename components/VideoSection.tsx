@@ -73,19 +73,9 @@ export default function VideoSection({ videoSrc, posterSrc, mainText, dimmedText
 
   return (
     <div ref={sectionRef} className="procreate-section">
-      <div style={{
-        maxWidth: '1340px',
-        margin: '0 auto',
-        padding: '0 25px',
-      }}>
+      <div className="video-section-wrapper">
         {/* Video */}
-        <div style={{
-          borderRadius: '64px',
-          overflow: 'hidden',
-          aspectRatio: '2.2/1',
-          border: '1px solid rgba(255,255,255,0.07)',
-          transform: 'translate3d(0, 0, 0)',
-        }}>
+        <div className="video-section-card">
           <video
             ref={videoRef}
             src={`${CDN}/${videoSrc}`}
@@ -99,7 +89,7 @@ export default function VideoSection({ videoSrc, posterSrc, mainText, dimmedText
         </div>
 
         {/* Text */}
-        <div style={{ padding: '40px 60px 0' }}>
+        <div className="video-section-text">
           <p
             ref={textRef}
             className="text-heading text-heading--md"

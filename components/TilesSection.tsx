@@ -52,14 +52,17 @@ export default function TilesSection() {
   return (
     <div ref={sectionRef} className="procreate-section" style={{ background: '#0a0a0a' }}>
       <div className="container">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '40px',
-          justifyItems: 'center',
-        }}>
+        <div
+          className="tiles-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '32px',
+            justifyItems: 'center',
+          }}
+        >
           {tiles.map((tile, i) => (
-            <div key={i} className="tile-card" style={{ maxWidth: '350px', width: '100%' }}>
+            <div key={i} className="tile-card" style={{ maxWidth: '360px', width: '100%' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`${CDN}/${tile.img}`}
@@ -67,13 +70,13 @@ export default function TilesSection() {
                 loading="lazy"
                 decoding="async"
                 style={{
-                  borderRadius: '42px',
+                  borderRadius: '32px',
                   display: 'block',
-                  marginBottom: '20px',
+                  marginBottom: '18px',
                   width: '100%',
                 }}
               />
-              <p className="text-body" style={{ fontWeight: 600, padding: '0 20px', color: '#aaa' }}>
+              <p className="text-body" style={{ fontWeight: 600, padding: '0 16px', color: '#aaa' }}>
                 {tile.text}{' '}
                 <span style={{ color: '#fff' }}>{tile.highlight}</span>
                 {tile.extra && tile.extra}

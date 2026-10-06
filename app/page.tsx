@@ -18,11 +18,11 @@ const CDN = 'https://procreate-assets-cdn.procreate.com/_nuxt';
 // Keyframes cards rendered inside DualIpadSection via children
 function KeyframesCards() {
   return (
-    <div style={{
+    <div className="keyframe-cards-grid" style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '20px',
-      marginTop: '40px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+      gap: '16px',
+      marginTop: '24px',
     }}>
       {/* Move & Scale */}
       <div style={{

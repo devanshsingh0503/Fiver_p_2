@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const items1 = ["What's new?", "What's new?", "What's new?", "What's new?"];
 const items2 = [
@@ -20,7 +23,6 @@ export default function MarqueeSection() {
     let anim2: gsap.core.Tween;
 
     const ctx = gsap.context(() => {
-      // First marquee (right to left)
       anim1 = gsap.to(track1Ref.current, {
         xPercent: -50,
         duration: 18,
@@ -28,7 +30,6 @@ export default function MarqueeSection() {
         ease: 'linear',
       });
 
-      // Second marquee (left to right, slightly slower)
       anim2 = gsap.to(track2Ref.current, {
         xPercent: -50,
         duration: 22,
@@ -37,7 +38,6 @@ export default function MarqueeSection() {
       });
     }, containerRef);
 
-    // Pause when off-screen to save CPU/battery
     const container = containerRef.current;
     if (container) {
       const observer = new IntersectionObserver(
@@ -63,33 +63,15 @@ export default function MarqueeSection() {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ background: '#0a0a0a', overflow: 'hidden', paddingTop: '40px', contentVisibility: 'auto' }}>
+    <div ref={containerRef} style={{ background: '#0a0a0a', overflow: 'hidden', paddingTop: '32px', contentVisibility: 'auto' }}>
       {/* Marquee row 1 */}
-      <a href="/dreams/whats-new" style={{ display: 'block', overflow: 'hidden', height: '120px' }}>
-        <div
-          ref={track1Ref}
-          style={{
-            display: 'flex',
-            whiteSpace: 'nowrap',
-            width: 'max-content',
-            transform: 'translate3d(0, 0, 0)',
-            willChange: 'transform',
-          }}
-        >
+      <a href="/dreams/whats-new" className="marquee-row" style={{ textDecoration: 'none' }}>
+        <div ref={track1Ref} className="marquee-track">
           {[...items1, ...items1].map((text, i) => (
             <span
               key={i}
-              style={{
-                display: 'inline-block',
-                fontSize: 'clamp(80px, 13vw, 140px)',
-                fontWeight: 700,
-                lineHeight: '0.9',
-                color: '#282828',
-                letterSpacing: '-0.01em',
-                marginRight: '60px',
-                cursor: 'pointer',
-                transition: 'color 0.2s',
-              }}
+              className="marquee-item"
+              style={{ cursor: 'pointer', transition: 'color 0.2s' }}
               onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
               onMouseLeave={e => (e.currentTarget.style.color = '#282828')}
             >
@@ -100,29 +82,12 @@ export default function MarqueeSection() {
       </a>
 
       {/* Marquee row 2 */}
-      <a href="/dreams/whats-new" style={{ display: 'block', overflow: 'hidden', height: '120px' }}>
-        <div
-          ref={track2Ref}
-          style={{
-            display: 'flex',
-            whiteSpace: 'nowrap',
-            width: 'max-content',
-            transform: 'translate3d(0, 0, 0)',
-            willChange: 'transform',
-          }}
-        >
+      <a href="/dreams/whats-new" className="marquee-row" style={{ textDecoration: 'none', marginTop: '4px' }}>
+        <div ref={track2Ref} className="marquee-track">
           {[...items2, ...items2].map((text, i) => (
             <span
               key={i}
-              style={{
-                display: 'inline-block',
-                fontSize: 'clamp(80px, 13vw, 140px)',
-                fontWeight: 700,
-                lineHeight: '0.9',
-                color: '#282828',
-                letterSpacing: '-0.01em',
-                marginRight: '60px',
-              }}
+              className="marquee-item"
             >
               {text}
             </span>
@@ -131,8 +96,8 @@ export default function MarqueeSection() {
       </a>
 
       {/* CTA below marquee */}
-      <div style={{ textAlign: 'center', padding: '40px 24px 60px' }}>
-        <p className="text-body" style={{ marginBottom: '16px', color: '#888' }}>
+      <div style={{ textAlign: 'center', padding: '32px 20px 48px' }}>
+        <p className="text-body" style={{ marginBottom: '14px', color: '#888' }}>
           Learn about the latest update.
         </p>
         <a href="/dreams/whats-new" className="btn btn-md btn-primary">

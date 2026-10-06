@@ -51,7 +51,105 @@ a {
   text-decoration: none;
 }
 
-/* Hardware accelerated iPad mockup styles */
+/* ─── HERO ─────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.75;
+  transform: translate3d(0, 0, 0);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.4) 50%,
+    rgba(10,10,10,0.95) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 80px 20px 40px;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-label {
+  color: rgba(255,255,255,0.75) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.1em;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.hero-desc {
+  max-width: 400px;
+  color: rgba(255,255,255,0.8) !important;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important;
+}
+
+.hero-award {
+  height: 48px;
+}
+
+.hero-price {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ─── NAVBAR ────────────────────────────────────────────── */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.navbar-hamburger {
+  display: none;
+}
+
+/* ─── HARDWARE ACCELERATED IPAD MOCKUP ───────────────────── */
 .ipad-pro-m4 {
   --landscape-device-width: 90vw;
   --landscape-max-device-width: 834px;
@@ -122,15 +220,15 @@ a {
   object-fit: cover;
 }
 
-/* Section styles */
+/* ─── SECTION BASE ──────────────────────────────────────── */
 .procreate-section {
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
 .container--medium {
@@ -141,11 +239,108 @@ a {
   max-width: 600px;
 }
 
-/* Text styles */
+/* ─── VIDEO SECTION ─────────────────────────────────────── */
+.video-section-wrapper {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.video-section-card {
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 2.2/1;
+  border: 1px solid rgba(255,255,255,0.07);
+  transform: translate3d(0, 0, 0);
+}
+
+.video-section-text {
+  padding: 28px 20px 0;
+}
+
+/* ─── MARQUEE ───────────────────────────────────────────── */
+.marquee-row {
+  display: block;
+  overflow: hidden;
+  height: 90px;
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.marquee-item {
+  display: inline-block;
+  font-size: clamp(56px, 12vw, 140px);
+  font-weight: 700;
+  line-height: 0.9;
+  color: #282828;
+  letter-spacing: -0.01em;
+  margin-right: 40px;
+}
+
+/* ─── FLIPBOOK SECTION ──────────────────────────────────── */
+.flipbook-ipads-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+/* ─── DUAL IPAD SECTION ─────────────────────────────────── */
+.dual-ipad-grid {
+  position: relative;
+  height: 260px;
+}
+
+/* ─── FEATURE SLIDER ────────────────────────────────────── */
+.feature-slider-track {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  width: max-content;
+  padding-left: 4px;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.feature-card {
+  min-width: 240px;
+  max-width: 280px;
+  background: #141414;
+  border: 1px solid #242424;
+  border-radius: 32px;
+  padding: 24px;
+  flex-shrink: 0;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* ─── CAROUSEL ──────────────────────────────────────────── */
+.carousel-card {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* ─── TILE CARDS ────────────────────────────────────────── */
+.tile-card {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* ─── TEXT STYLES ───────────────────────────────────────── */
 .text-subheading {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #888;
 }
@@ -155,50 +350,50 @@ a {
 }
 
 .text-heading--lg {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 5vw, 5rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
 .text-heading--md {
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .text-heading--sm {
-  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .text-heading--xs {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .text-heading--special {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.7rem, 4vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .text-body {
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
   line-height: 1.6;
   color: #aaa;
 }
 
 .text-body--sm {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: #888;
 }
 
-/* Button styles */
+/* ─── BUTTONS ───────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -209,6 +404,7 @@ a {
   transition: opacity 0.2s;
   border: none;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .btn:hover {
@@ -225,31 +421,7 @@ a {
   color: #fff;
 }
 
-/* Carousel styles */
-.dreams-carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.dreams-carousel__item {
-  position: absolute;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s, width 0.5s;
-}
-
-/* Feature slider */
-.dreams-feature-slider {
-  display: flex;
-  gap: 20px;
-  flex-wrap: nowrap;
-}
-
-.dreams-features-item {
-  min-width: 280px;
-  flex-shrink: 0;
-}
-
-/* Accordion */
+/* ─── ACCORDION ─────────────────────────────────────────── */
 .accordion {
   border-bottom: 1px solid #222;
 }
@@ -259,24 +431,25 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 18px 0;
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   text-align: left;
+  gap: 12px;
 }
 
 .accordion-content {
   overflow: hidden;
   color: #888;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
-/* Scrollbar hiding */
+/* ─── SCROLLBAR HIDING ──────────────────────────────────── */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -285,20 +458,7 @@ a {
   scrollbar-width: none;
 }
 
-/* GPU Acceleration & Performance utility classes */
-.carousel-card {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  will-change: transform, opacity;
-}
-
-.tile-card,
-.feature-card {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  will-change: transform, opacity;
-}
-
+/* ─── GPU UTILITIES ─────────────────────────────────────── */
 img, video {
   content-visibility: auto;
 }
@@ -308,3 +468,203 @@ img, video {
   backface-visibility: hidden;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+═══════════════════════════════════════════════════════════ */
+
+/* ─── TABLET (≤ 768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar-links {
+    display: none;
+  }
+  .navbar-hamburger {
+    display: block;
+  }
+
+  /* Hero */
+  .hero-content {
+    padding: 90px 20px 50px;
+    gap: 16px;
+  }
+  .hero-award {
+    height: 42px;
+  }
+
+  /* Sections */
+  .procreate-section {
+    padding: 48px 0;
+  }
+
+  /* Video Section */
+  .video-section-card {
+    border-radius: 20px;
+    aspect-ratio: 16/9;
+  }
+  .video-section-text {
+    padding: 20px 4px 0;
+  }
+
+  /* Marquee */
+  .marquee-row {
+    height: 70px;
+  }
+  .marquee-item {
+    font-size: clamp(48px, 11vw, 80px);
+    margin-right: 28px;
+  }
+
+  /* Flipbook */
+  .flipbook-ipads-container {
+    min-height: 180px;
+  }
+
+  /* Dual iPad */
+  .dual-ipad-grid {
+    height: 200px;
+  }
+
+  /* Feature slider cards */
+  .feature-card {
+    min-width: 200px;
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  /* Tiles grid - 1 column */
+  .tiles-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .tile-card {
+    max-width: 100% !important;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 40px 0;
+  }
+}
+
+/* ─── MOBILE (≤ 480px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Hero */
+  .hero-section {
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+  .hero-bg-img {
+    object-position: 60% top;
+  }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.2) 35%,
+      rgba(10,10,10,0.97) 65%,
+      rgba(10,10,10,1) 100%
+    );
+  }
+  .hero-content {
+    padding: 40px 20px 48px;
+    gap: 14px;
+    justify-content: flex-end;
+    margin-top: 45vh;
+  }
+  .hero-title {
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+  }
+
+  /* Sections */
+  .procreate-section {
+    padding: 40px 0;
+  }
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Video section */
+  .video-section-wrapper {
+    padding: 0 12px;
+  }
+  .video-section-card {
+    border-radius: 16px;
+  }
+
+  /* Marquee - hide on very small to prevent overflow issues */
+  .marquee-row {
+    height: 60px;
+  }
+  .marquee-item {
+    font-size: 42px;
+    margin-right: 20px;
+  }
+
+  /* Flipbook - hide side iPads on mobile */
+  .flipbook-left-ipad,
+  .flipbook-right-ipad {
+    display: none !important;
+  }
+  .flipbook-ipads-container {
+    min-height: unset;
+  }
+
+  /* Feature cards */
+  .feature-card {
+    min-width: 180px;
+    padding: 18px;
+    border-radius: 20px;
+  }
+  .feature-card h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Dual iPads - center single iPad */
+  .dual-ipad-left {
+    display: none !important;
+  }
+  .dual-ipad-right {
+    position: relative !important;
+    margin: 0 auto !important;
+  }
+  .dual-ipad-grid {
+    height: auto !important;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  /* Keyframe cards */
+  .keyframe-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Carousel buttons */
+  .carousel-nav-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .carousel-nav-btn-left {
+    left: 8px !important;
+  }
+  .carousel-nav-btn-right {
+    right: 8px !important;
+  }
+
+  /* FAQ */
+  .accordion-trigger {
+    font-size: 0.9rem;
+    padding: 16px 0;
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
