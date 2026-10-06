@@ -1,3 +1,5 @@
+'use client';
+
 export default function Footer() {
   return (
     <footer style={{
@@ -25,6 +27,7 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
+                className="footer-link"
                 style={{ color: '#555', fontSize: '0.8rem', transition: 'color 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                 onMouseLeave={e => (e.currentTarget.style.color = '#555')}
