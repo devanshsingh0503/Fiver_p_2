@@ -27,8 +27,7 @@ export default function RootLayout({
           rel="preload"
           as="image"
           href="https://procreate-assets-cdn.procreate.com/_nuxt/hero.C3IhNT7Q.jpg"
-          // @ts-expect-error fetchpriority attribute
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <link
           rel="preload"
