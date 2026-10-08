@@ -263,6 +263,8 @@ a {
   width: 100%;
   z-index: 5;
   overflow: hidden;
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .ipad-pro-m4__content > img,
@@ -384,10 +386,49 @@ a {
 }
 
 /* ─── TILE CARDS ────────────────────────────────────────── */
+.tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  justify-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .tile-card {
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   will-change: transform, opacity;
+}
+
+.tile-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 744 / 904;
+  border-radius: 42px;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #0a0a0a;
+  margin-bottom: 20px;
+  /* Force GPU compositing so overflow:hidden clips correctly on all browsers */
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.tile-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Scale up so image content reaches the rounded corners with zero white gap */
+  transform: scale(1.07);
+  transform-origin: center center;
+  /* No border-radius here — the container clips everything */
 }
 
 /* ─── TEXT STYLES ───────────────────────────────────────── */
@@ -591,10 +632,16 @@ img, video {
   /* Tiles grid */
   .tiles-grid {
     grid-template-columns: 1fr !important;
-    gap: 24px !important;
+    gap: 40px !important;
+    padding: 0 8px;
   }
   .tile-card {
-    max-width: 100% !important;
+    max-width: 420px !important;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .tile-image-container {
+    border-radius: 32px;
   }
 }
 
@@ -702,6 +749,22 @@ img, video {
   /* Keyframe cards */
   .keyframe-cards-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  /* Tiles */
+  .tiles-grid {
+    gap: 32px !important;
+    padding: 0 4px;
+  }
+  .tile-card {
+    max-width: 100% !important;
+  }
+  .tile-image-container {
+    border-radius: 24px;
+  }
+  .tile-img {
+    /* Keep the same zoom on phones */
+    transform: scale(1.07);
   }
 
   /* Carousel buttons */

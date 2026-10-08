@@ -30,6 +30,8 @@ function KeyframesCards() {
         background: '#141414',
         border: '1px solid #242424',
         overflow: 'hidden',
+        isolation: 'isolate',
+        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
       }}>
         <div style={{ padding: '32px' }}>
           <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', marginBottom: '8px' }}>
@@ -55,6 +57,8 @@ function KeyframesCards() {
         background: '#141414',
         border: '1px solid #242424',
         overflow: 'hidden',
+        isolation: 'isolate',
+        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
       }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

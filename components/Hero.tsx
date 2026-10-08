@@ -34,8 +34,7 @@ export default function Hero() {
           src={`${CDN}/hero.C3IhNT7Q.jpg`}
           alt="Procreate Dreams on iPad"
           loading="eager"
-          // @ts-expect-error fetchpriority attribute
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="sync"
           className="hero-main-img"
           width="2880"
