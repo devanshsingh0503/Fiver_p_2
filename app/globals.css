@@ -170,8 +170,8 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60%;
-  background: linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0.88) 40%, rgba(10, 10, 10, 0.22) 75%, transparent 100%);
+  height: 65%;
+  background: linear-gradient(0deg, #0a0a0a 0%, #0a0a0a 35%, rgba(10, 10, 10, 0.92) 55%, rgba(10, 10, 10, 0.22) 80%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -345,7 +345,8 @@ a {
 .marquee-row {
   display: block;
   overflow: hidden;
-  height: 90px;
+  height: clamp(110px, 14vw, 185px);
+  line-height: 0.85;
 }
 
 .marquee-track {
@@ -354,16 +355,20 @@ a {
   width: max-content;
   transform: translate3d(0, 0, 0);
   will-change: transform;
+  align-items: center;
 }
 
 .marquee-item {
   display: inline-block;
-  font-size: clamp(56px, 12vw, 140px);
+  font-size: clamp(84px, 13vw, 180px);
   font-weight: 700;
-  line-height: 0.9;
+  line-height: 0.85;
   color: #282828;
-  letter-spacing: -0.01em;
-  margin-right: 40px;
+  letter-spacing: -0.02em;
+  margin-right: clamp(36px, 4vw, 64px);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  user-select: none;
 }
 
 /* ─── FLIPBOOK SECTION ──────────────────────────────────── */
