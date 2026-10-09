@@ -67,8 +67,27 @@ export default function Navbar() {
         {/* Desktop nav links - strictly hidden on mobile */}
         <div className="navbar-links">
           {['Apps', 'Learning', 'Company'].map((item) => (
-            <button key={item} style={{ background: 'none', border: 'none', color: '#ccc', fontSize: '0.9rem', cursor: 'pointer', fontWeight: 500 }}>
-              {item}
+            <button
+              key={item}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#e5e5e5',
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                fontWeight: 500,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#e5e5e5')}
+            >
+              <span>{item}</span>
+              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.85 }}>
+                <path d="M1 1.25L4 4.25L7 1.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
           ))}
         </div>
@@ -84,6 +103,36 @@ export default function Navbar() {
           <span className="hamburger-bar" />
         </button>
       </div>
+
+      {/* Pinned Accessibility Toggle (Procreate signature widget) */}
+      <button
+        aria-label="Accessibility settings"
+        style={{
+          position: 'fixed',
+          right: 0,
+          top: '74px',
+          zIndex: 1001,
+          width: '32px',
+          height: '36px',
+          backgroundColor: '#161616',
+          border: '1px solid rgba(255, 255, 255, 0.16)',
+          borderRight: 'none',
+          borderRadius: '8px 0 0 8px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          padding: 0,
+          boxShadow: '0 4px 14px rgba(0,0,0,0.5)',
+          transition: 'background-color 0.2s',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#262626')}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#161616')}
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.5V21.5M2.5 12H21.5M5.28 5.28L18.72 18.72M5.28 18.72L18.72 5.28" stroke="#d5fa00" strokeWidth="2.8" strokeLinecap="round" />
+        </svg>
+      </button>
 
       {/* Mobile menu dropdown */}
       {menuOpen && (

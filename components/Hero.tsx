@@ -3,85 +3,66 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-const CDN = 'https://procreate-assets-cdn.procreate.com/_nuxt';
-
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // Autoplay fallback ensuring the video plays immediately
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.15 });
-      tl.from('.hero-element', {
-        y: 25,
+      const tl = gsap.timeline({ delay: 0.1 });
+      tl.from('.hero-anim-item', {
+        y: 24,
         opacity: 0,
-        duration: 0.75,
+        duration: 0.8,
         stagger: 0.1,
         ease: 'power3.out',
       });
     }, containerRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="hero-section"
-    >
-      {/* Top: iPad Mockup image (hero.C3IhNT7Q.jpg contains the complete iPad frame + artwork) */}
-      <div className="hero-image-wrap hero-element">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`${CDN}/hero.C3IhNT7Q.jpg`}
-          alt="Procreate Dreams on iPad"
-          loading="eager"
-          fetchPriority="high"
-          decoding="sync"
-          className="hero-main-img"
-          width="2880"
-          height="1372"
+    <section ref={containerRef} className="home-hero-root">
+      {/* Video Background with Top and Bottom Gradients */}
+      <div className="home-hero-video-wrapper">
+        <video
+          ref={videoRef}
+          src="/videos/anyone-can-animate_t.ltq_lnqx.mp4"
+          poster="/images/anyone-can-animate_t.yzczH4Sn.jpg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="home-hero-video"
         />
+        {/* Top Scrim Gradient for Navbar Legibility */}
+        <div className="home-hero-top-scrim" />
+        {/* Bottom Scrim Gradient for Smooth Blend into Dark Background */}
+        <div className="home-hero-bottom-scrim" />
       </div>
 
-      {/* Bottom: Typography, Award, and CTA cleanly stacked on black background */}
-      <div className="container">
-        <div className="hero-content">
-          <p className="hero-element hero-subtitle">
-            PROCREATE DREAMS
-          </p>
+      {/* Main Typography - Shifted below and strictly single-line */}
+      <div className="home-hero-center">
+        <p className="hero-anim-item home-hero-leader">
+          CREATIVE TOOLS MADE FOR YOU
+        </p>
 
-          <h1 className="hero-element hero-title">
-            Edit. Animate.<br />Create.
-          </h1>
+        <h1 className="hero-anim-item home-hero-title">
+          Art is for everyone.
+        </h1>
 
-          <p className="hero-element hero-desc">
-            Procreate Dreams is an award-winning animation app, packed with powerful tools that anyone can use.
-          </p>
-
-          {/* Apple Design Award badge */}
-          <div className="hero-element hero-award-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${CDN}/ada-2024_en.DuGQqvxS.svg`}
-              alt="Apple Design Awards 2024 Winner"
-              className="hero-award"
-            />
-          </div>
-
-          {/* Buy now button */}
-          <a
-            className="hero-element btn btn-primary hero-btn"
-            href="https://apps.apple.com/app/apple-store/id1595520602"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Buy now
-          </a>
-
-          {/* Pricing label */}
-          <p className="hero-element hero-price">
-            No subscriptions. $12.99 USD once.
-          </p>
-        </div>
+        <p className="hero-anim-item home-hero-description">
+          Amplify your creativity with our powerful and intuitive apps, made for
+          <br className="hero-desc-br" />
+          creative professionals and aspiring artists.
+        </p>
       </div>
     </section>
   );
