@@ -104,36 +104,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Pinned Accessibility Toggle (Procreate signature widget) */}
-      <button
-        aria-label="Accessibility settings"
-        style={{
-          position: 'fixed',
-          right: 0,
-          top: '74px',
-          zIndex: 1001,
-          width: '32px',
-          height: '36px',
-          backgroundColor: '#161616',
-          border: '1px solid rgba(255, 255, 255, 0.16)',
-          borderRight: 'none',
-          borderRadius: '8px 0 0 8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          padding: 0,
-          boxShadow: '0 4px 14px rgba(0,0,0,0.5)',
-          transition: 'background-color 0.2s',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#262626')}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#161616')}
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.5V21.5M2.5 12H21.5M5.28 5.28L18.72 18.72M5.28 18.72L18.72 5.28" stroke="#d5fa00" strokeWidth="2.8" strokeLinecap="round" />
-        </svg>
-      </button>
-
       {/* Mobile menu dropdown */}
       {menuOpen && (
         <div className="navbar-mobile-menu">
